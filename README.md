@@ -1,8 +1,8 @@
-♻️ Upcycle-It
+# ♻️ Upcycle-It
 
 ### Upcycle-It is a web-based, AI-powered application designed to give broken and old items a second life. Aligned with the UN Sustainable Development Goal 11 (Sustainable Cities and Communities), this tool helps reduce landfill waste by generating creative, practical, and step-by-step upcycling tutorials for any item you describe. ###
 
-✨ Features
+# ✨ Features
 
 ### AI-Powered Generation: Uses the Google Gemini API to instantly generate 3 unique DIY upcycling projects based on your specific item. 
 
