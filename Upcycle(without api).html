@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcycle-It | SDG 11 Sustainable Cities</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Keyframes for Liquid Blob Animation */
+        @keyframes morph {
+            0%, 100% {
+                border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+                transform: translate(2%, 2%) rotate(10deg);
+            }
+            66% {
+                border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+                transform: translate(-2%, -2%) rotate(-5deg);
+            }
+        }   
+        
+        @keyframes morph-reverse {
+            0%, 100% {
+                border-radius: 50% 50% 30% 70% / 60% 40% 70% 40%;
+
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                border-radius: 30% 70% 70% 30% / 50% 60% 30% 60%;
+                transform: translate(-3%, 2%) rotate(-10deg);
+            }
+            66% {
+                border-radius: 60% 40% 20% 80% / 30% 70% 50% 40%;
+                transform: translate(3%, -2%) rotate(5deg);
+            }
+        }
+
+        .liquid-blob-1 {
+            animation: morph 12s ease-in-out infinite;
+        }
+        
+        .liquid-blob-2 {
+            animation: morph-reverse 15s ease-in-out infinite;
+        }
+
+        /* Hide scrollbar for cleaner look inside output */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen bg-slate-950 font-sans overflow-hidden flex items-center justify-center p-4">
+
+    <!-- Liquid Background Blobs -->
+    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] min-w-[300px] min-h-[300px] bg-gradient-to-br from-emerald-500/40 to-teal-700/40 blur-3xl liquid-blob-1 pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] min-w-[350px] min-h-[350px] bg-gradient-to-tl from-cyan-600/30 to-blue-800/40 blur-3xl liquid-blob-2 pointer-events-none z-0"></div>
+
+    <!-- Main Glassmorphism UI Card -->
+    <main class="relative z-10 w-full max-w-5xl bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex flex-col h-[95vh] max-h-[900px] overflow-hidden">
+        
+        <!-- Header & Top Glass Navigation -->
+        <div class="p-6 md:p-8 pb-4 shrink-0 border-b border-white/10 bg-slate-900/10">
+            <header class="text-center mb-6">
+                <div class="inline-flex items-center justify-center space-x-2 mb-2">
+                    <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                    </svg>
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-300 tracking-tight">Upcycle-It</h1>
+                </div>
+                <p class="text-slate-300 text-sm md:text-base hidden sm:block">SDG 11: Sustainable Cities & Communities — Give broken items a second life.</p>
+            </header>
+            
+            <!-- Navigation Menu -->
+            <nav class="flex justify-center space-x-2 md:space-x-4 bg-slate-900/40 p-1.5 rounded-2xl border border-white/10 w-fit mx-auto backdrop-blur-md">
+                <button data-tab="generator" class="nav-btn active px-4 py-2 rounded-xl text-sm font-semibold text-emerald-300 bg-white/10 shadow-sm transition-all hover:bg-white/20">Generator</button>
+                <button data-tab="results" class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold text-slate-400 hover:text-emerald-300 hover:bg-white/5 transition-all">Results</button>
+                <button data-tab="gallery" class="nav-btn px-4 py-2 rounded-xl text-sm font-semibold text-slate-400 hover:text-emerald-300 hover:bg-white/5 transition-all">Inspiration Gallery</button>
+            </nav>
+        </div>
+
+        <!-- Content Area -->
+        <div class="flex-1 overflow-y-auto no-scrollbar p-6 md:p-8 relative">
+            
+            <!-- SECTION: Generator -->
+            <section id="sec-generator" class="tab-section transition-opacity duration-300 flex flex-col justify-center h-full max-w-2xl mx-auto opacity-100">
+                <div class="bg-white/5 border border-white/10 rounded-3xl p-6 md:p-10 shadow-lg">
+                    <!-- Input Area -->
+                    <div class="shrink-0 mb-6">
+                        <label for="itemInput" class="block text-emerald-200 text-base font-medium mb-3">What broken or old item do you have?</label>
+                        <textarea id="itemInput" rows="4" class="w-full bg-slate-900/50 border border-slate-600 rounded-2xl p-4 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all resize-none shadow-inner" placeholder="E.g., A cracked ceramic mug, a wooden chair with a missing leg, old torn jeans..."></textarea>
+                    </div>
+
+                    <!-- Action Button -->
+                    <button id="generateBtn" class="shrink-0 w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-bold text-lg shadow-lg hover:shadow-emerald-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center space-x-2 group">
+                        <span>Generate Upcycling Ideas</span>
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Loading State -->
+                    <div id="loadingState" class="hidden flex-col items-center justify-center py-10 shrink-0">
+                        <div class="relative w-16 h-16 mb-4">
+                            <div class="absolute inset-0 border-4 border-slate-700 rounded-full"></div>
+                            <div class="absolute inset-0 border-4 border-emerald-400 rounded-full border-t-transparent animate-spin"></div>
+                        </div>
+                        <p class="text-emerald-300 font-medium animate-pulse">Consulting eco-crafting experts...</p>
+                    </div>
+
+                    <!-- Error State -->
+                    <div id="errorState" class="hidden shrink-0 mt-6 p-4 bg-red-900/30 border border-red-500/50 rounded-xl text-red-200 text-center"></div>
+                </div>
+            </section>
+
+            <!-- SECTION: Results -->
+            <section id="sec-results" class="tab-section hidden opacity-0 transition-opacity duration-300 h-full">
+                <div class="flex flex-col md:flex-row gap-6 h-full">
+                    <!-- AI Results -->
+                    <div class="flex-1 overflow-y-auto no-scrollbar rounded-2xl border border-white/10 bg-slate-900/40 p-6 shadow-inner relative">
+                        <div id="resultContent" class="space-y-8">
+                            <!-- Empty state placeholder -->
+                            <div class="h-full min-h-[300px] flex flex-col items-center justify-center text-slate-500 text-center space-y-4">
+                                <svg class="w-16 h-16 text-slate-600 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                                <p class="italic">Submit an item in the Generator to see upcycling magic here!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative DIY Image -->
+                    <div class="w-full md:w-[40%] lg:w-1/3 shrink-0 rounded-2xl overflow-hidden border border-white/10 shadow-lg hidden md:block relative group">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent z-10 pointer-events-none"></div>
+                        <img src="UPCYCLE.png" alt="Upcycling Crafting" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]">
+                        <div class="absolute bottom-4 left-4 right-4 z-20">
+                            <h4 class="text-white font-bold text-lg mb-1">Make Art, Not Waste</h4>
+                            <p class="text-emerald-200 text-xs">Transforming the forgotten into the spectacular.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: Inspiration Gallery -->
+            <section id="sec-gallery" class="tab-section hidden opacity-0 transition-opacity duration-300 h-full overflow-y-auto no-scrollbar pb-10">
+                <div class="columns-2 md:columns-3 gap-4 space-y-4">
+                    <div class="relative group rounded-xl overflow-hidden border border-white/10 shadow-sm">
+                        <img src="glass.jpg" class="w-full group-hover:scale-105 transition-transform duration-500" alt="Upcycled jars">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><p class="text-white font-medium text-sm">Glass Jars</p></div>
+                    </div>
+                    <div class="relative group rounded-xl overflow-hidden border border-white/10 shadow-sm">
+                        <img src="wood.jpg" class="w-full group-hover:scale-105 transition-transform duration-500" alt="Woodworking">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><p class="text-white font-medium text-sm">Wood Pallets</p></div>
+                    </div>
+                    <div class="relative group rounded-xl overflow-hidden border border-white/10 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=500&q=80" class="w-full group-hover:scale-105 transition-transform duration-500" alt="Craft supplies">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><p class="text-white font-medium text-sm">Paper Crafts</p></div>
+                    </div>
+                    <div class="relative group rounded-xl overflow-hidden border border-white/10 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=500&q=80" class="w-full group-hover:scale-105 transition-transform duration-500" alt="Painting">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><p class="text-white font-medium text-sm">Restoration</p></div>
+                    </div>
+                    <div class="relative group rounded-xl overflow-hidden border border-white/10 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=500&q=80" class="w-full group-hover:scale-105 transition-transform duration-500" alt="Yarn/knitting">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><p class="text-white font-medium text-sm">Textiles</p></div>
+                    </div>
+                    <div class="relative group rounded-xl overflow-hidden border border-white/10 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&w=500&q=80" class="w-full group-hover:scale-105 transition-transform duration-500" alt="Sewing machine">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><p class="text-white font-medium text-sm">Repurposed Clothing</p></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // API Configuration
+        const apiKey = "..............................."; // API key populated by the Canvas environment
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+        // DOM Elements
+        const itemInput = document.getElementById('itemInput');
+        const generateBtn = document.getElementById('generateBtn');
+        const loadingState = document.getElementById('loadingState');
+        const errorState = document.getElementById('errorState');
+        const resultContent = document.getElementById('resultContent');
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const tabSections = document.querySelectorAll('.tab-section');
+
+        // Tab Management
+        function switchTab(tabId) {
+            // Update Navigation Button Styles
+            navBtns.forEach(btn => {
+                if (btn.dataset.tab === tabId) {
+                    btn.classList.add('active', 'text-emerald-300', 'bg-white/10', 'shadow-sm');
+                    btn.classList.remove('text-slate-400');
+                } else {
+                    btn.classList.remove('active', 'text-emerald-300', 'bg-white/10', 'shadow-sm');
+                    btn.classList.add('text-slate-400');
+                }
+            });
+
+            // Toggle Sections Visibility with a simple cross-fade logic
+            tabSections.forEach(sec => {
+                if (sec.id === `sec-${tabId}`) {
+                    sec.classList.remove('hidden');
+                    // Slight delay to allow display:block to render before transitioning opacity
+                    setTimeout(() => sec.classList.remove('opacity-0'), 20);
+                } else {
+                    sec.classList.add('hidden', 'opacity-0');
+                }
+            });
+        }
+
+        // Attach Event Listeners to Tabs
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+        });
+
+        // System Instruction tailored to generate pre-styled HTML
+        const systemPrompt = `
+            You are a master DIY crafter and sustainability expert focused on UN SDG 11 (Sustainable Cities and Communities). 
+            Your goal is to help users upcycle, repurpose, and reuse old or broken items to reduce landfill waste.
+            
+            The user will provide a description of a broken or old item.
+            You must generate exactly 3 highly creative, practical, and step-by-step upcycling tutorials for that item.
+            
+            CRITICAL FORMATTING INSTRUCTIONS:
+            - Respond ONLY with raw HTML. Do NOT wrap the response in markdown blocks (e.g., no \`\`\`html ... \`\`\`).
+            - Do not include <html>, <body>, or <head> tags. Just the interior content.
+            - Use the following specific Tailwind CSS classes in your HTML to ensure it looks beautiful in the dark UI:
+              - Wrapper for each project: <div class="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors">
+              - Project Title (h3): <h3 class="text-2xl font-bold text-emerald-300 mb-3 flex items-center gap-2"><span class="text-xl">♻️</span> [Title]</h3>
+              - Paragraph descriptions (p): <p class="text-slate-300 mb-4 leading-relaxed text-sm">
+              - Subheadings for sections (h4): <h4 class="text-teal-200 font-semibold mb-2 mt-4 text-sm uppercase tracking-wide">
+              - Unordered lists for materials (ul): <ul class="list-disc pl-5 mb-4 text-slate-300 text-sm space-y-1 marker:text-emerald-500">
+              - Ordered lists for steps (ol): <ol class="list-decimal pl-5 mb-2 text-slate-300 text-sm space-y-2 marker:text-teal-400 font-medium">
+              - List items (li): <li class="pl-1">
+            
+            Structure each of the 3 projects like this:
+            [Wrapper div]
+               [h3 Title]
+               [p Brief pitch on why this is a good idea]
+               [h4 Materials Needed]
+               [ul list of materials]
+               [h4 Steps]
+               [ol list of steps]
+            [End Wrapper div]
+            
+            Keep steps concise and easy to follow. Be highly creative.
+        `;
+
+        // Helper function for API call with exponential backoff
+        async function fetchWithRetry(url, payload, retries = 3, initialDelay = 1000) {
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json().catch(() => ({}));
+                        throw new Error(`API Error: ${response.status} - ${errorData.error?.message || 'Unknown error'}`);
+                    }
+
+                    return await response.json();
+                } catch (error) {
+                    if (i === retries - 1) throw error; // Re-throw if last attempt fails
+                    
+                    // Wait with exponential backoff
+                    const delay = initialDelay * Math.pow(2, i);
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                }
+            }
+        }
+
+        // Main action handler
+        generateBtn.addEventListener('click', async () => {
+            const query = itemInput.value.trim();
+            
+            // Basic validation
+            if (!query) {
+                showError("Please describe an item first! (e.g., 'a rusty tin can')");
+                itemInput.focus();
+                return;
+            }
+
+            // Update UI State for Loading
+            errorState.classList.add('hidden');
+            loadingState.classList.remove('hidden');
+            loadingState.classList.add('flex');
+            generateBtn.disabled = true;
+            generateBtn.classList.add('opacity-70', 'cursor-not-allowed');
+            
+            const payload = {
+                contents: [{ parts: [{ text: `Here is the item I want to upcycle: ${query}` }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                generationConfig: {
+                    temperature: 0.7 // Slightly creative but structured
+                }
+            };
+
+            try {
+                const data = await fetchWithRetry(apiUrl, payload);
+                
+                // Extract text from the candidate response
+                if (data.candidates && data.candidates.length > 0 && data.candidates[0].content?.parts?.length > 0) {
+                    let htmlContent = data.candidates[0].content.parts[0].text;
+                    
+                    // Clean up potential markdown artifacts just in case the LLM ignored instructions
+                    htmlContent = htmlContent.replace(/```html\n?/g, '').replace(/```\n?/g, '');
+                    
+                    resultContent.innerHTML = htmlContent;
+                    
+                    // Auto-switch to Results tab
+                    switchTab('results');
+                } else {
+                    throw new Error("Received an unexpected response structure from the AI.");
+                }
+            } catch (error) {
+                console.error("Upcycle-It Generation Error:", error);
+                showError(error.message || "Failed to generate ideas. Please try again.");
+            } finally {
+                // Restore button state and hide loading
+                loadingState.classList.add('hidden');
+                loadingState.classList.remove('flex');
+                generateBtn.disabled = false;
+                generateBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+            }
+        });
+
+        function showError(message) {
+            errorState.textContent = message;
+            errorState.classList.remove('hidden');
+        }
+
+        // Allow 'Enter' key to trigger generation if input is focused (Cmd/Ctrl + Enter)
+        itemInput.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                generateBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
